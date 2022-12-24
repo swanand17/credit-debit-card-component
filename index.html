@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./index.js"></script>
+  
+  <title>Frontend Mentor | Interactive card details form</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+  <main class="main-container">
+    <div class="cards-container">
+      <div class="card-front">
+        <img src="./images/card-logo.svg" alt="card-logo">
+        <div class="card-front--info">
+          <p class="card--number">0000 0000 0000 0000</p>
+          <div class="card--name-date">
+            <p class="card--name">JANE APPLESEED</p>
+            <p class="card--date">00/00</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-back">
+        <p class="card--cvc">000</p>
+      </div>
+    </div>
+    <div class="form-container">
+      <form name="myForm" onsubmit="return validateForm()" method="post">
+        <div class="input_container-cardHolderName">
+          <p><label for="cardHolderName">CARDHOLDER NAME:</label></p>
+          <input onkeyup="keyupFn(event)" type="text" id="cardHolderName" placeholder="e.g Jane Appleseed" maxlength="20" data-index="0">
+          <p class="blank-field" style="display: none;">Can't be blank</p>
+          <p class="wrong-format" style="display: none;">Wrong format, letters only.</p>
+        </div>
+        <div class="input_container-cardNumber">
+          <p><label for="cardNumber">CARD NUMBER:</label></p>  
+          <input onkeyup="keyupFn(event)" type="text" id="cardNumber" placeholder="e.g 0000 0000 0000 0000"
+          maxlength="19" data-index="1">
+          <p class="blank-field"  style="display: none;">Can't be blank</p>
+          <p class="wrong-format" style="display: none;">Wrong format, numbers only.</p>
+        </div>
+        <div class="date-cvc-container">
+          <div class="date-container">
+            <p>EXP. DATE(MM/YY):</p>
+            <div class="input_container-exp-date">
+              <div class="input_container-exp-date--month">
+                <input onkeyup="keyupFn(event)" type="text" id="cardMonth" class="input_exp-date" min="01" max="12" placeholder="MM" maxlength="2" data-index="2">
+                <p class="blank-field"  style="display: none;">Can't be blank</p>
+                <p class="wrong-format" style="display: none;">Wrong format, numbers only.</p>
+              </div>
+              <div class="input_container-exp-date--year">
+                <input onkeyup="keyupFn(event)" type="text" id="cardYear" class="input_exp-date" placeholder="YY" maxlength="2" data-index="3">
+                <p class="blank-field"  style="display: none;">Can't be blank</p>
+                <p class="wrong-format" style="display: none;">Wrong format, numbers only.</p>
+              </div>
+            </div>
+          </div>
+          <div class="input_container-cvc">
+            <p><label for="cardCVC">CVC:</label></p>
+            <input onkeyup="keyupFn(event)" type="text" id="cardCVC" placeholder="e.g 123" maxlength="3" data-index="4">
+            <p class="blank-field"  style="display: none;">Can't be blank</p>
+            <p class="wrong-format" style="display: none;">Wrong format, numbers only.</p>
+          </div>  
+        </div>  
+        <button type="button" id="btn_confirm" onclick="validateForm()">Confirm</button>
+      </form> 
+    </div>
+    <div class="thank-you-container" style="display: none;">
+      <p>Thank you!</p>
+      <p>We've added your card details</p>
+      <button type="submit" id="btn_continue">Continue</button>
+    </div>
+  </main>
+  
+  
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+</body>
+</html>
